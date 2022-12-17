@@ -1,6 +1,9 @@
 package chess;
 
+import TabuleiroJogo.Posicao;
 import TabuleiroJogo.Tabuleiro;
+import chess.Pecas.King;
+import chess.Pecas.Torre;
 
 public class chessPartida {
 
@@ -8,6 +11,7 @@ public class chessPartida {
 	
 	public chessPartida() {
 		tabuleiro = new Tabuleiro (8, 8);
+		setupInicial();
 	}
 	
 	public chessPeca[][] getPecas(){
@@ -20,4 +24,9 @@ public class chessPartida {
 		return mat;
 	}
 	
+	private void setupInicial() {
+		tabuleiro.ColocarPecas(new Torre(tabuleiro, Cor.WHITE), new Posicao(2, 1) );
+		tabuleiro.ColocarPecas(new King(tabuleiro, Cor.BLACK), new Posicao(0, 4) );
+		tabuleiro.ColocarPecas(new King(tabuleiro, Cor.WHITE), new Posicao(7, 4) );
+	}
 }
