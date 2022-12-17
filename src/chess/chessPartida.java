@@ -1,6 +1,5 @@
 package chess;
 
-import TabuleiroJogo.Posicao;
 import TabuleiroJogo.Tabuleiro;
 import chess.Pecas.King;
 import chess.Pecas.Torre;
@@ -24,9 +23,13 @@ public class chessPartida {
 		return mat;
 	}
 	
+	private void ColocarNovaPeca(char coluna, int linha, chessPeca peca) {
+		tabuleiro.ColocarPecas(peca, new ChessPosicao(coluna, linha).toPosicao());
+	}
+	
 	private void setupInicial() {
-		tabuleiro.ColocarPecas(new Torre(tabuleiro, Cor.WHITE), new Posicao(2, 1) );
-		tabuleiro.ColocarPecas(new King(tabuleiro, Cor.BLACK), new Posicao(0, 4) );
-		tabuleiro.ColocarPecas(new King(tabuleiro, Cor.WHITE), new Posicao(7, 4) );
+		ColocarNovaPeca('b', 6, new Torre(tabuleiro, Cor.WHITE));
+		ColocarNovaPeca('e', 8, new King(tabuleiro, Cor.BLACK));
+		ColocarNovaPeca('e', 1,new King(tabuleiro, Cor.WHITE));
 	}
 }
