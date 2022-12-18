@@ -18,6 +18,6 @@ public class King extends chessPeca {
 	@Override
 	public boolean[][] possiveisMovimentos() {
 		boolean [][] mat = new boolean[getTabuleiro().getLinhas()] [getTabuleiro().getColunas()]; 
-				return mat;
+		return mat;
 	}
 }

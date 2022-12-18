@@ -21,7 +21,7 @@ public abstract class Pecas {
 	}
 	
 	public boolean esseMovimentoEPossivel() {
-		boolean [] [] mat = possiveisMovimentos();
+		boolean [][] mat = possiveisMovimentos();
 		for(int i = 0; i < mat.length; i++) {
 			for(int j = 0; j < mat.length; j++) {
 				if(mat[i][j]) {

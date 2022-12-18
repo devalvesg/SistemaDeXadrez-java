@@ -25,19 +25,11 @@ public class chessPartida {
 		return mat;
 	}
 
-	private void validateSourcePosicao(Posicao posicao) {
-		if (!tabuleiro.TemUmaPeca(posicao)) {
-		throw new ChessException("Não existe peça nessa posição");
-		}
-		if(!tabuleiro.pecas(posicao).esseMovimentoEPossivel()) {
-			throw new ChessException("Não existe movimentos possiveis para essa peça");
-		}
-	}
-	
 	public chessPeca perfomeChessMove(ChessPosicao sourcePosicao, ChessPosicao targetPosicao) {
 		Posicao source = sourcePosicao.toPosicao();
 		Posicao target = targetPosicao.toPosicao();
 		validateSourcePosicao(source);
+		validateTargetPosicao(source, target);
 		Pecas capturarPeca = fazerMover(source, target);
 		return (chessPeca)capturarPeca;
 	}
@@ -49,6 +41,21 @@ public class chessPartida {
 		return capturarPecas;
 	}
 
+	private void validateSourcePosicao(Posicao posicao) {
+		if (!tabuleiro.TemUmaPeca(posicao)) {
+			throw new ChessException("Não existe peça nessa posição");
+		}
+		if(!tabuleiro.pecas(posicao).esseMovimentoEPossivel()) {
+			throw new ChessException("Não existe movimentos possiveis para essa peça");
+		}
+	}
+	
+	private void validateTargetPosicao(Posicao source, Posicao target) {
+		if(!tabuleiro.pecas(source).possiveisMovimentos(target)) {
+		throw new ChessException("A peça escolhida não pode se mover para posição de destino");
+		}
+	}
+	
 
 	private void ColocarNovaPeca(char coluna, int linha, chessPeca peca) {
 		tabuleiro.ColocarPecas(peca, new ChessPosicao(coluna, linha).toPosicao());
