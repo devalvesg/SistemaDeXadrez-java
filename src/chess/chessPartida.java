@@ -24,6 +24,12 @@ public class chessPartida {
 		}
 		return mat;
 	}
+	
+	public boolean [][] possiveisMovimentos(ChessPosicao sourcePosicao){
+		Posicao posicao = sourcePosicao.toPosicao();
+		validateSourcePosicao(posicao);
+		return tabuleiro.pecas(posicao).possiveisMovimentos();
+	}
 
 	public chessPeca perfomeChessMove(ChessPosicao sourcePosicao, ChessPosicao targetPosicao) {
 		Posicao source = sourcePosicao.toPosicao();
@@ -55,7 +61,6 @@ public class chessPartida {
 		throw new ChessException("A peça escolhida não pode se mover para posição de destino");
 		}
 	}
-	
 
 	private void ColocarNovaPeca(char coluna, int linha, chessPeca peca) {
 		tabuleiro.ColocarPecas(peca, new ChessPosicao(coluna, linha).toPosicao());
