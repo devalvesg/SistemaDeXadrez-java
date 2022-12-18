@@ -29,6 +29,9 @@ public class chessPartida {
 		if (!tabuleiro.TemUmaPeca(posicao)) {
 		throw new ChessException("Não existe peça nessa posição");
 		}
+		if(!tabuleiro.pecas(posicao).esseMovimentoEPossivel()) {
+			throw new ChessException("Não existe movimentos possiveis para essa peça");
+		}
 	}
 	
 	public chessPeca perfomeChessMove(ChessPosicao sourcePosicao, ChessPosicao targetPosicao) {
