@@ -22,7 +22,7 @@ public class Torre extends chessPeca{
 		Posicao p = new Posicao(0, 0);
 		
 		//PARA CIMA
-		p.setValores(posicao.getLinha()-1, posicao.getColuna());
+		p.setValores(posicao.getLinha() - 1, posicao.getColuna());
 		while(getTabuleiro().posicaoExiste(p) && !getTabuleiro().TemUmaPeca(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setLinha(p.getLinha() - 1);
@@ -32,7 +32,7 @@ public class Torre extends chessPeca{
 		}
 		
 		//ESQUERDA
-		p.setValores(posicao.getLinha(), posicao.getColuna()-1);
+		p.setValores(posicao.getLinha(), posicao.getColuna() - 1);
 		while(getTabuleiro().posicaoExiste(p) && !getTabuleiro().TemUmaPeca(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setColuna(p.getColuna() - 1);
@@ -42,17 +42,17 @@ public class Torre extends chessPeca{
 		}
 		
 		//DIREITA
-		p.setValores(posicao.getLinha()+1, posicao.getColuna());
+		p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
 		while(getTabuleiro().posicaoExiste(p) && !getTabuleiro().TemUmaPeca(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
-			p.setLinha(p.getLinha() + 1);
+			p.setColuna(p.getColuna() + 1);
 		}
 		if(getTabuleiro().posicaoExiste(p) && existePecaDoOponente(p)) {
 			mat [p.getLinha()] [p.getColuna()] = true;			
 		}
 		
 		//PARA BAIXO
-		p.setValores(posicao.getLinha()+1, posicao.getColuna());
+		p.setValores(posicao.getLinha() + 1, posicao.getColuna());
 		while(getTabuleiro().posicaoExiste(p) && !getTabuleiro().TemUmaPeca(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 			p.setLinha(p.getLinha() + 1);

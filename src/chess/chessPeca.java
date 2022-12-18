@@ -17,6 +17,10 @@ public abstract class chessPeca extends Pecas{
 		return cor;
 	}
 	
+	public ChessPosicao getChessPosicao() {
+		return ChessPosicao.fromPosicao(posicao);
+	}
+	
 	protected boolean existePecaDoOponente (Posicao posicao) {
 		chessPeca p = (chessPeca)getTabuleiro().pecas(posicao);
 		return p != null && p.getCor() != cor;
