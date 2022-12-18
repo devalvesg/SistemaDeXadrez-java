@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import TabuleiroJogo.Pecas;
 import TabuleiroJogo.Posicao;
 import TabuleiroJogo.Tabuleiro;
@@ -11,13 +14,15 @@ public class chessPartida {
 	private int turno;
 	private Cor jogadorAtual;
 	private Tabuleiro tabuleiro;
+	private List<Pecas> pecasNoTabuleiro = new ArrayList<>();
+	private List<Pecas> pecasCapturadas = new ArrayList<>();
 	
 	
 	public chessPartida() {
 		tabuleiro = new Tabuleiro (8, 8);
-		setupInicial();
 		turno = 1;
 		jogadorAtual = Cor.WHITE;
+		setupInicial();
 	}
 	
 	public int getTurno() {
@@ -57,6 +62,11 @@ public class chessPartida {
 		Pecas p = tabuleiro.removePeca(source);
 		Pecas capturarPecas = tabuleiro.removePeca(target);
 		tabuleiro.ColocarPecas(p, target);
+		
+		if(capturarPecas != null) {
+			pecasNoTabuleiro.remove(capturarPecas);
+			pecasCapturadas.add(capturarPecas);
+		}
 		return capturarPecas;
 	}
 
@@ -86,6 +96,7 @@ public class chessPartida {
 
 	private void ColocarNovaPeca(char coluna, int linha, chessPeca peca) {
 		tabuleiro.ColocarPecas(peca, new ChessPosicao(coluna, linha).toPosicao());
+		pecasNoTabuleiro.add(peca);
 	}
 	
 	private void setupInicial() {
