@@ -1,5 +1,7 @@
 package chess;
 
+import TabuleiroJogo.Pecas;
+import TabuleiroJogo.Posicao;
 import TabuleiroJogo.Tabuleiro;
 import chess.Pecas.King;
 import chess.Pecas.Torre;
@@ -22,7 +24,29 @@ public class chessPartida {
 		}
 		return mat;
 	}
+
+	private void validateSourcePosicao(Posicao posicao) {
+		if (!tabuleiro.TemUmaPeca(posicao)) {
+		throw new ChessException("Não existe peça nessa posição");
+		}
+	}
 	
+	public chessPeca perfomeChessMove(ChessPosicao sourcePosicao, ChessPosicao targetPosicao) {
+		Posicao source = sourcePosicao.toPosicao();
+		Posicao target = targetPosicao.toPosicao();
+		validateSourcePosicao(source);
+		Pecas capturarPeca = fazerMover(source, target);
+		return (chessPeca)capturarPeca;
+	}
+	
+	private Pecas fazerMover(Posicao source, Posicao target) {
+		Pecas p = tabuleiro.removePeca(source);
+		Pecas capturarPecas = tabuleiro.removePeca(target);
+		tabuleiro.ColocarPecas(p, target);
+		return capturarPecas;
+	}
+
+
 	private void ColocarNovaPeca(char coluna, int linha, chessPeca peca) {
 		tabuleiro.ColocarPecas(peca, new ChessPosicao(coluna, linha).toPosicao());
 	}
