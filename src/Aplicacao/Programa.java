@@ -20,7 +20,7 @@ public class Programa {
 		chessPartida chesspartida = new chessPartida();
 		List<chessPeca> captured = new ArrayList<>();
 		
-		while(true) {
+		while(!chesspartida.getCheckMate()) {
 			try {
 				UI.clearScreen();
 				UI.PrintPartida(chesspartida, captured);
@@ -37,6 +37,7 @@ public class Programa {
 				ChessPosicao target = UI.readChessPosicao(entrada);
 				
 				chessPeca capturarPeca = chesspartida.perfomeChessMove(source, target);
+				
 				if(capturarPeca != null) {
 					captured.add(capturarPeca);
 				}
@@ -50,5 +51,7 @@ public class Programa {
 				entrada.nextLine();
 			}
 		}
+		UI.clearScreen();
+		UI.PrintPartida(chesspartida, captured);
 	}
 }
