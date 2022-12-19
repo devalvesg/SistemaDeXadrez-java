@@ -8,6 +8,7 @@ import TabuleiroJogo.Pecas;
 import TabuleiroJogo.Posicao;
 import TabuleiroJogo.Tabuleiro;
 import chess.Pecas.Bispo;
+import chess.Pecas.Cavalo;
 import chess.Pecas.King;
 import chess.Pecas.Peao;
 import chess.Pecas.Torre;
@@ -192,9 +193,11 @@ public class chessPartida {
 	private void setupInicial() {
 		
 		ColocarNovaPeca('a', 1, new Torre(tabuleiro, Cor.WHITE));
+		ColocarNovaPeca('b', 1, new Cavalo(tabuleiro, Cor.WHITE));
 		ColocarNovaPeca('c', 1, new Bispo(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('e', 1, new King(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('f', 1, new Bispo(tabuleiro, Cor.WHITE));
+        ColocarNovaPeca('g', 1, new Cavalo(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('h', 1, new Torre(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('a', 2, new Peao(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('b', 2, new Peao(tabuleiro, Cor.WHITE));
@@ -206,9 +209,11 @@ public class chessPartida {
         ColocarNovaPeca('h', 2, new Peao(tabuleiro, Cor.WHITE));
 
         ColocarNovaPeca('a', 8, new Torre(tabuleiro, Cor.BLACK));
+        ColocarNovaPeca('b', 8, new Cavalo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('c', 8, new Bispo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('e', 8, new King(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('f', 8, new Bispo(tabuleiro, Cor.BLACK));
+        ColocarNovaPeca('g', 8, new Cavalo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('h', 8, new Torre(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('a', 7, new Peao(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('b', 7, new Peao(tabuleiro, Cor.BLACK));
