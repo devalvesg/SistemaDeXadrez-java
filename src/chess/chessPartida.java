@@ -11,6 +11,7 @@ import chess.Pecas.Bispo;
 import chess.Pecas.Cavalo;
 import chess.Pecas.King;
 import chess.Pecas.Peao;
+import chess.Pecas.Rainha;
 import chess.Pecas.Torre;
 
 public class chessPartida {
@@ -195,6 +196,7 @@ public class chessPartida {
 		ColocarNovaPeca('a', 1, new Torre(tabuleiro, Cor.WHITE));
 		ColocarNovaPeca('b', 1, new Cavalo(tabuleiro, Cor.WHITE));
 		ColocarNovaPeca('c', 1, new Bispo(tabuleiro, Cor.WHITE));
+		ColocarNovaPeca('d', 1, new Rainha(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('e', 1, new King(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('f', 1, new Bispo(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('g', 1, new Cavalo(tabuleiro, Cor.WHITE));
@@ -211,6 +213,7 @@ public class chessPartida {
         ColocarNovaPeca('a', 8, new Torre(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('b', 8, new Cavalo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('c', 8, new Bispo(tabuleiro, Cor.BLACK));
+        ColocarNovaPeca('d', 8, new Rainha(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('e', 8, new King(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('f', 8, new Bispo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('g', 8, new Cavalo(tabuleiro, Cor.BLACK));

@@ -41,7 +41,7 @@ public class Peao extends chessPeca {
 				mat[p.getLinha()][p.getColuna()] = true;
 			}
 			p.setValores(posicao.getLinha() + 2, posicao.getColuna());
-			Posicao p2 = new Posicao(posicao.getLinha() - 1, posicao.getColuna());
+			Posicao p2 = new Posicao(posicao.getLinha() + 1, posicao.getColuna());
 			if(getTabuleiro().posicaoExiste(p) && !getTabuleiro().TemUmaPeca(p) && getTabuleiro().posicaoExiste(p2) && !getTabuleiro().TemUmaPeca(p2) && getContagemMovimentos() == 0){
 					mat	[p.getLinha()][p.getColuna()] = true;
 				}
