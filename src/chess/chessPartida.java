@@ -96,6 +96,23 @@ public class chessPartida {
 			pecasNoTabuleiro.remove(capturarPecas);
 			pecasCapturadas.add(capturarPecas);
 		}
+		
+		//MOVIMENTO ESPECIAL ROQUE LADO TORRE
+		if(p instanceof King && target.getColuna() == source.getColuna() + 2) {
+			Posicao sourceT = new Posicao(source.getLinha(), source.getColuna() + 3);
+			Posicao targetT = new Posicao(source.getLinha(), source.getColuna() + 1);
+			chessPeca torre = (chessPeca)tabuleiro.removePeca(sourceT);
+			tabuleiro.ColocarPecas(torre, targetT);
+			torre.increaseContagemMovimentos();
+		}
+		//MOVIMENTO ESPECIAL ROQUE LADO RAINHA
+		if(p instanceof King && target.getColuna() == source.getColuna() - 2) {
+			Posicao sourceT = new Posicao(source.getLinha(), source.getColuna() - 4);
+			Posicao targetT = new Posicao(source.getLinha(), source.getColuna() - 1);
+			chessPeca torre = (chessPeca)tabuleiro.removePeca(sourceT);
+			tabuleiro.ColocarPecas(torre, targetT);
+			torre.increaseContagemMovimentos();
+		}
 		return capturarPecas;
 	}
 	
@@ -109,6 +126,22 @@ public class chessPartida {
 			pecasCapturadas.remove(capPecas);
 			pecasNoTabuleiro.add(capPecas);
 		}
+			//MOVIMENTO ESPECIAL ROQUE LADO TORRE
+			if(p instanceof King && target.getColuna() == source.getColuna() + 2) {
+				Posicao sourceT = new Posicao(source.getLinha(), source.getColuna() + 3);
+				Posicao targetT = new Posicao(source.getLinha(), source.getColuna() + 1);
+				chessPeca torre = (chessPeca)tabuleiro.removePeca(targetT);
+				tabuleiro.ColocarPecas(torre, sourceT);
+				torre.decreaseContagemMovimentos();
+			}
+			//MOVIMENTO ESPECIAL ROQUE LADO RAINHA
+			if(p instanceof King && target.getColuna() == source.getColuna() - 2) {
+				Posicao sourceT = new Posicao(source.getLinha(), source.getColuna() - 4);
+				Posicao targetT = new Posicao(source.getLinha(), source.getColuna() - 1);
+				chessPeca torre = (chessPeca)tabuleiro.removePeca(targetT);
+				tabuleiro.ColocarPecas(torre, sourceT);
+				torre.decreaseContagemMovimentos();
+			}
 	}
 
 	private void validateSourcePosicao(Posicao posicao) {
@@ -197,7 +230,7 @@ public class chessPartida {
 		ColocarNovaPeca('b', 1, new Cavalo(tabuleiro, Cor.WHITE));
 		ColocarNovaPeca('c', 1, new Bispo(tabuleiro, Cor.WHITE));
 		ColocarNovaPeca('d', 1, new Rainha(tabuleiro, Cor.WHITE));
-        ColocarNovaPeca('e', 1, new King(tabuleiro, Cor.WHITE));
+        ColocarNovaPeca('e', 1, new King(tabuleiro, Cor.WHITE, this));
         ColocarNovaPeca('f', 1, new Bispo(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('g', 1, new Cavalo(tabuleiro, Cor.WHITE));
         ColocarNovaPeca('h', 1, new Torre(tabuleiro, Cor.WHITE));
@@ -214,7 +247,7 @@ public class chessPartida {
         ColocarNovaPeca('b', 8, new Cavalo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('c', 8, new Bispo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('d', 8, new Rainha(tabuleiro, Cor.BLACK));
-        ColocarNovaPeca('e', 8, new King(tabuleiro, Cor.BLACK));
+        ColocarNovaPeca('e', 8, new King(tabuleiro, Cor.BLACK, 	this));
         ColocarNovaPeca('f', 8, new Bispo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('g', 8, new Cavalo(tabuleiro, Cor.BLACK));
         ColocarNovaPeca('h', 8, new Torre(tabuleiro, Cor.BLACK));
