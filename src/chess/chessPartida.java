@@ -83,7 +83,8 @@ public class chessPartida {
 	}
 	
 	private Pecas fazerMover(Posicao source, Posicao target) {
-		Pecas p = tabuleiro.removePeca(source);
+		chessPeca p = (chessPeca)tabuleiro.removePeca(source);
+		p.increaseContagemMovimentos();
 		Pecas capturarPecas = tabuleiro.removePeca(target);
 		tabuleiro.ColocarPecas(p, target);
 		
@@ -95,7 +96,8 @@ public class chessPartida {
 	}
 	
 	private void desfazerMovimento(Posicao source, Posicao target, Pecas capPecas) {
-		Pecas p = tabuleiro.removePeca(target);
+		chessPeca p = (chessPeca)tabuleiro.removePeca(target);
+		p.decreaseContagemMovimentos();
 		tabuleiro.ColocarPecas(p, source);
 		
 		if (capPecas != null) {
